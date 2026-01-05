@@ -6,9 +6,14 @@ import { UserRole } from "@prisma/client";
 const router = express.Router();
 
 router.get(
-    "/me",
-    auth(UserRole.ADMIN, UserRole.USER, UserRole.SPECIALIST, UserRole.SUPER_ADMIN),
-    UserController.getMyProfile
+  "/me",
+  auth(
+    UserRole.ADMIN,
+    UserRole.USER,
+    UserRole.SPECIALIST,
+    UserRole.SUPER_ADMIN
+  ),
+  UserController.getMyProfile
 );
 
 export const UserRoutes = router;

@@ -1,7 +1,14 @@
 import { PrismaClient } from "@prisma/client";
+import { Pool } from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
+
+// Create PostgreSQL connection pool
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool);
 
 export const prisma = new PrismaClient({
-  log: [
+    adapter,  // ✅ Pass adapter instead of URL
+     log: [
     {
       emit: "event",
       level: "query",
@@ -19,7 +26,28 @@ export const prisma = new PrismaClient({
       level: "warn",
     },
   ],
-});
+})
+
+// export const prisma = new PrismaClient({
+//   log: [
+//     {
+//       emit: "event",
+//       level: "query",
+//     },
+//     {
+//       emit: "event",
+//       level: "error",
+//     },
+//     {
+//       emit: "event",
+//       level: "info",
+//     },
+//     {
+//       emit: "event",
+//       level: "warn",
+//     },
+//   ],
+// });
 
 // prisma.$on("query", (e) => {
 //   console.log("-------------------------------------------");
