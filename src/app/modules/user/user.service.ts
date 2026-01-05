@@ -38,8 +38,8 @@ const createAdmin = async (req: Request) => {
   });
 };
 
-// 2. Create Guide (By Admin/Super Admin)
-const createGuide = async (req: Request) => {
+// 2. Create Specialist (By Admin/Super Admin)
+const createSpecialist = async (req: Request) => {
   const file = req.file;
   let profilePhoto = "";
   if (file) {
@@ -54,12 +54,12 @@ const createGuide = async (req: Request) => {
 
   return await prisma.user.create({
     data: {
-      email: req.body.guide.email,
+      email: req.body.specialist.email,
       password: hashedPassword,
-      name: req.body.guide.name,
-      contactNo: req.body.guide.contactNo,
-      bio: req.body.guide.bio,
-      address: req.body.guide.address,
+      name: req.body.specialist.name,
+      contactNo: req.body.specialist.contactNo,
+      bio: req.body.specialist.bio,
+      address: req.body.specialist.address,
       role: UserRole.SPECIALIST,
       status: UserStatus.ACTIVE,
       isVerified: true,
@@ -206,7 +206,7 @@ const changeUserRole = async (
 
 export const UserService = {
   createAdmin,
-  createGuide,
+  createSpecialist,
   getAllUsers,
   getMyProfile,
   updateMyProfile,

@@ -8,7 +8,7 @@ import { prisma } from "../../../shared/prisma";
 import ApiError from "../../errors/ApiError";
 import emailSender from "../../utils/emailSender";
 
-// 1. Register Tourist (With Email Verification)
+// 1. Register User (With Email Verification)
 const registerUser = async (payload: any) => {
   const isExist = await prisma.user.findUnique({
     where: { email: payload.email },
@@ -23,7 +23,7 @@ const registerUser = async (payload: any) => {
     Number(config.bcrypt.SALT_ROUND)
   );
 
-  // Default Role: TOURIST, Status: ACTIVE, Verified: FALSE
+  // Default Role: User, Status: ACTIVE, Verified: FALSE
   const newUser = await prisma.user.create({
     data: {
       email: payload.email,

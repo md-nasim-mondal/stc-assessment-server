@@ -17,12 +17,12 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const createGuide = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserService.createGuide(req);
+const createSpecialist = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserService.createSpecialist(req);
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
-    message: "Guide created successfully!",
+    message: "Specialist created successfully!",
     data: result,
   });
 });
@@ -100,7 +100,7 @@ const changeUserRole = catchAsync(
 
 export const UserController = {
   createAdmin,
-  createGuide,
+  createSpecialist,
   getAllUsers,
   getMyProfile,
   updateMyProfile,

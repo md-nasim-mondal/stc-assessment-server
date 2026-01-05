@@ -10,9 +10,9 @@ const createAdminValidation = z.object({
   }),
 });
 
-const createGuideValidation = z.object({
+const createSpecialistValidation = z.object({
   password: z.string().min(6),
-  guide: z.object({
+  specialist: z.object({
     name: z.string(),
     email: z.string().email(),
     contactNo: z.string(),
@@ -40,7 +40,7 @@ const updateRoleValidation = z.object({
 
 export const UserValidation = {
   createAdminValidation,
-  createGuideValidation,
+  createSpecialistValidation,
   updateStatusValidation,
   updateRoleValidation,
 };

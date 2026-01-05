@@ -21,17 +21,17 @@ router.post(
   UserController.createAdmin
 );
 
-// Guide Creation (Admin / Super Admin)
+// Specialist Creation (Admin / Super Admin)
 router.post(
-  "/create-guide",
+  "/create-specialist",
   auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
   fileUploader.upload.single("file"),
   (req: Request, res: Response, next: NextFunction) => {
     req.body = JSON.parse(req.body.data);
     next();
   },
-  validateRequest(UserValidation.createGuideValidation),
-  UserController.createGuide
+  validateRequest(UserValidation.createSpecialistValidation),
+  UserController.createSpecialist
 );
 
 // Get All Users (Admin / Super Admin)
