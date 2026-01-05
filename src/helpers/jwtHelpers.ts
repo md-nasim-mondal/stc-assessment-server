@@ -18,4 +18,5 @@ export const createToken = generateToken;
 export const jwtHelpers = {
   createToken,
   verifyToken,
+  generateToken
 };
