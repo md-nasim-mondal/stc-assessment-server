@@ -1,0 +1,15 @@
+model media {
+  id            String    @id @default(uuid()) @db.Uuid
+  specialist_id String?   @db.Uuid
+  file_name     String
+  file_size     Int
+  display_order Int?
+  mime_type     MimeType
+  media_type    MediaType
+  uploaded_at   DateTime  @default(now())
+  deleted_at    DateTime?
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+
+  specialist specialists? @relation(fields: [specialist_id], references: [id])
+}

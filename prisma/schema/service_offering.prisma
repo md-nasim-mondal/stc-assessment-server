@@ -1,0 +1,12 @@
+model service_offerings {
+  id            String  @id @default(uuid()) @db.Uuid
+  specialist_id String? @db.Uuid
+  title         String?
+  name          String?
+  category      String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  specialist specialists? @relation(fields: [specialist_id], references: [id])
+}

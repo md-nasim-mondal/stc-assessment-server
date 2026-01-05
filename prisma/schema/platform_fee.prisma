@@ -1,0 +1,9 @@
+model platform_fee {
+  id                      String   @id @default(uuid()) @db.Uuid
+  tier_name               TierName
+  min_value               Int
+  max_value               Int
+  platform_fee_percentage Decimal  @db.Decimal(10, 2)
+  created_at              DateTime @default(now())
+  updated_at              DateTime @updatedAt
+}
