@@ -16,9 +16,9 @@ const emailSender = async (email: string, html: string) => {
   });
 
   await transporter.sendMail({
-    from: '"STP Support" <support@stp.com>', // sender address
+    from: '"STC Support" <support@stc.com>', // sender address
     to: email, // list of receivers
-    subject: "STP - Account Security & Verification", // Subject line
+    subject: "STC - Account Security & Verification", // Subject line
     //text: "Hello world?", // plain text body
     html, // html body
   });
